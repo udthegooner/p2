@@ -90,7 +90,7 @@ Task List Usage:
   - test ...
   - test ...
   
-- Task 4: Write a JobListIterator class
+oDJ Task 4: Write a JobListIterator class
   Make sure that it is implemented as described in the assignment.
   - add a constructor 
   - hasNext()
