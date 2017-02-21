@@ -50,14 +50,14 @@ Task List Usage:
   Code letter = Student name
   ---------------------------
         DJ    = Daniel Jones
-              =
+        YB    = Yuchen Bai
               =
               =
               =
               =
               =
               
-- Task 2: Define the JobList class so that it implements the ListADT
+-YB Task 2: Define the JobList class so that it implements the ListADT
   as described in p0.  List sub-tasks here.
   
     - Create an Eclipse project for p2
