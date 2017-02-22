@@ -51,13 +51,13 @@ Task List Usage:
   ---------------------------
         DJ    = Daniel Jones
         YB    = Yuchen Bai
-              =
+        UD    = Udhbhav Gupta
               =
               =
               =
               =
               
--YB Task 2: Define the JobList class so that it implements the ListADT
+o YB Task 2: Define the JobList class so that it implements the ListADT
   as described in p0.  List sub-tasks here.
   
     - Create an Eclipse project for p2
@@ -90,7 +90,7 @@ Task List Usage:
   - test ...
   - test ...
   
-oDJ Task 4: Write a JobListIterator class
++ DJ Task 4: Write a JobListIterator class
   Make sure that it is implemented as described in the assignment.
   - add a constructor 
   - hasNext()
@@ -104,7 +104,7 @@ oDJ Task 4: Write a JobListIterator class
   required operations of the ScoreboardADT. Review the Game class
   to see how the Scoreboard class is being used.
   
-- Task 7: Complete the Game class implementation by completing the
+o UD Task 7: Complete the Game class implementation by completing the
   TODO tags.
   
 - Task 8: Re-read the assignment and map out the actions that must
