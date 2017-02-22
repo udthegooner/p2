@@ -60,24 +60,24 @@ Task List Usage:
 -YB Task 2: Define the JobList class so that it implements the ListADT
   as described in p0.  List sub-tasks here.
   
-    - Create an Eclipse project for p2
-    - Download provided files, need these for sure:
-      - ListADT interface
-      - Listnode class
-      - Job class
-    - Add p2 files to your p2 project
-    - make sure that all classes and interfaces are in the default package
-    - Create a new class named JobList and add stub methods for
+    oYB Create an Eclipse project for p2
+    oYB Download provided files, need these for sure:
+      oYB ListADT interface
+      oYB Listnode class
+      oYB Job class
+    oYB Add p2 files to your p2 project
+    oYB make sure that all classes and interfaces are in the default package
+    oYB Create a new class named JobList and add stub methods for
       all required methods of the ListADT
-    - Add declaration to "implements ListADT<Job>" to this class
-    - implement each method
-       - add(item)
-       - add(pos,item)
-       - remove(pos)
-       - ...
-       - ...
-       - ...
-       - ...
+    oYB Add declaration to "implements ListADT<Job>" to this class
+    oYB implement each method
+       oYB add(item)
+       oYB add(pos,item)
+       oYB remove(pos)
+       oYB contains(item)
+       oYB get(pos)
+       oYB isEmpty()
+       oYB size()
        
 - Task 3: Write a Test_JobList class 
   This can be written before Task 2 is finished.
