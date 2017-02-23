@@ -52,7 +52,7 @@ Task List Usage:
         DJ    = Daniel Jones
         YB    = Yuchen Bai
         UD    = Udhbhav Gupta
-              =
+        CL    = Collin Lacy
               =
               =
               =
@@ -79,7 +79,7 @@ o YB Task 2: Define the JobList class so that it implements the ListADT
        - ...
        - ...
        
-- Task 3: Write a Test_JobList class 
+o CL Task 3: Write a Test_JobList class 
   This can be written before Task 2 is finished.
   Just write test methods that will pass when JobList is finished
   - add a main method
