@@ -100,7 +100,7 @@ o CL Task 3: Write a Test_JobList class
   JobList can return an iterator and that the JobListIterator
   works as expected.
   
-- Task 6: Write the Scoreboard class so that it implements all
+oDJ Task 6: Write the Scoreboard class so that it implements all
   required operations of the ScoreboardADT. Review the Game class
   to see how the Scoreboard class is being used.
   
