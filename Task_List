@@ -104,7 +104,7 @@ oDJ Task 6: Write the Scoreboard class so that it implements all
   required operations of the ScoreboardADT. Review the Game class
   to see how the Scoreboard class is being used.
   
-o UD Task 7: Complete the Game class implementation by completing the
++ UD Task 7: Complete the Game class implementation by completing the
   TODO tags.
   
 - Task 8: Re-read the assignment and map out the actions that must
