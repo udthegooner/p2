@@ -138,13 +138,8 @@ public class Game{
         Job currJob = list.remove(index); //job to be updated
         
         //checking that duration isn't greater than total timeunits for the job
-        try{
-        	if (duration > currJob.getTimeUnits())
-        		throw new IllegalArgumentException();
-        } catch (IllegalArgumentException e){
-        	System.out.println("Incorrect duration entered.");
-        	System.exit(0);
-        }
+        if (duration > currJob.getTimeUnits())
+            duration = currJob.getTimeUnits();
  
         //checking if duration is greater than timeToPlay
         if (duration > timeToPlay)
