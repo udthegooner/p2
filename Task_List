@@ -53,7 +53,7 @@ Task List Usage:
         YB    = Yuchen Bai
         UD    = Udhbhav Gupta
         CL    = Collin Lacy
-              =
+        MP    = Matthew Perry
               =
               =
               
@@ -112,7 +112,7 @@ o CL Task 3: Write a Test_JobList class
   it may be much more convenient to write methods and call them 
   from the main method.
   
-- Task 9: Implement the GameApp class incrementally.  
+o Task 9: Implement the GameApp class incrementally.  
   Compile and run after each of these items
   - main: get the command line arguments (use the getIntegerInput method)
   - Add the Welcome message as output
