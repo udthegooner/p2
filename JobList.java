@@ -23,9 +23,10 @@ import java.util.Iterator;
  *
  * @author Collin Lacy
  *         Yuchen Bai
+ *         Matthew Perry
  */
 
-public class JobList implements ListADT<Job> {
+public class JobList<Job> implements ListADT<Job> {
 
 	//Head Node
 	private Listnode<Job> head;
@@ -39,8 +40,8 @@ public class JobList implements ListADT<Job> {
 	 * Also sets the number of items in the list
 	 * 
 	 */
-	public JobList (Listnode<Job> head, int numItems){
-		head = new Listnode<Job>(null);
+	public JobList (Listnode<Job> head){
+		this.head = head;
 		numItems = 0;
 	}
 
@@ -49,8 +50,13 @@ public class JobList implements ListADT<Job> {
 	 * 
 	 * @return reference to Job iterator
 	 */
-	public Iterator<Job> iterator() {
-		return this.iterator();
+	public JobListIterator<Job> iterator() {
+		
+		//Create an iterator with direct access to the JobList
+		JobListIterator<Job> iterator = new JobListIterator<Job>(head);
+		
+		return iterator;
+		
 	}
 
 	/**
@@ -189,10 +195,10 @@ public class JobList implements ListADT<Job> {
 		//Traverse through list until the last node,
 		//Return true if item equals the current node's data
 		while (curr.getNext() != null) {
-			curr = curr.getNext();
 			if (item.equals(curr.getData())) {
 				return true;
 			}
+			curr = curr.getNext();
 		}
 		return false;
 	}
@@ -248,7 +254,7 @@ public class JobList implements ListADT<Job> {
 	@Override
 	public Job remove(int pos) {
 		//Check for bad pos range
-		if (pos < 0 || pos >= size() - 1) {
+		if (pos < 0 || pos > size() - 1) {
 			throw new IndexOutOfBoundsException();
 		}
 
