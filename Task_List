@@ -79,7 +79,7 @@ Task List Usage:
        oYB isEmpty()
        oYB size()
        
-o MP Task 3: Write a Test_JobList class 
++ MP Task 3: Write a Test_JobList class 
   This can be written before Task 2 is finished.
   Just write test methods that will pass when JobList is finished
   - add a main method
@@ -96,11 +96,11 @@ o MP Task 3: Write a Test_JobList class
   - hasNext()
   - next()
   
-o MP Task 5: Add a test to your Test_JobList class to test that the 
++ MP Task 5: Add a test to your Test_JobList class to test that the 
   JobList can return an iterator and that the JobListIterator
   works as expected.
   
-+DJ Task 6: Write the Scoreboard class so that it implements all
++ DJ Task 6: Write the Scoreboard class so that it implements all
   required operations of the ScoreboardADT. Review the Game class
   to see how the Scoreboard class is being used.
   
