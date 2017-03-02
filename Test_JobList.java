@@ -51,6 +51,13 @@ public class Test_JobList {
 			System.out.println("Exception successfully thrown for bad position.");
 			passedTests++;
 		}
+		//Try a close to bad position
+		try {
+			jobList.add(4, new Job("t", 10, 10));
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Exception successfully thrown for close to bad position.");
+			passedTests++;
+		}
 
 		System.out.println("---------------------------");
 		System.out.println("Testing JobList.contains(E item)");
@@ -108,9 +115,38 @@ public class Test_JobList {
 			System.out.println("Correctly returned size");
 			passedTests++;
 		} else {
-			System.out.println("FAIL 5");
+			System.out.println("FAIL 5 jobList.size() was: " + jobList.size() + ", expected: 3");
 		}
 
+		System.out.println("---------------------------");
+		System.out.println("Testing Joblist.iterator()");
+		
+		//Make sure Joblist returns an iterator.
+		JobListIterator iterator = jobList.iterator();
+		if (JobListIterator.class.isInstance(iterator)) {
+			System.out.println("Successfully returned an iterator.");
+			passedTests++;
+		}
+		else {
+			System.out.println("FAIL 12");
+		}
+		
+		//Make sure iterator works
+		int counter = 0;
+		while (iterator.hasNext()) {
+			iterator.next();
+			counter++;
+		}
+		
+		if (counter == 2) {
+			System.out.println("Iterator correctly shifts through list");
+			passedTests++;
+		}
+		else {
+			System.out.println("FAIL 13");
+		}
+		
+		
 		System.out.println("---------------------------");
 		System.out.println("Testing JobList.remove() and JobList.isEmpty()");
 
@@ -175,7 +211,7 @@ public class Test_JobList {
 		}
 
 		System.out.println("===========================");
-		System.out.println("TESTS PASSED: " + passedTests + "/17");
+		System.out.println("TESTS PASSED: " + passedTests + "/20");
 	}
 
 }
