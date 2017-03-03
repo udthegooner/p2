@@ -1,61 +1,69 @@
 /////////////////////////////////////////////////////////////////////////////
 // Semester:         CS367 Spring 2016 
 // PROJECT:          P2
-// FILE:             JobListIterator.java
+// FILE:             Scoreboard.java
 //
 // TEAM:    46 Paras
-// Authors: 
-// Author1: (Daniel Jones,djones39,lecture 2)
-//////////////////////////// 80 columns wide //////////////////////////////////
-
-import java.util.NoSuchElementException;
-
+// Author1: (Daniel Jones, djones39@wisc.edu, lecture 2)
 /**
- * Defines the iterator for a JobList by providing access to next 
- * and hasNext methods.
+ * The Scoreboard class holds a ListADT<Job> of all the completed jobs.
+ *  This class allows one to get the total score earned so far, update the score board,
+ *  and thus score, and also print out a display of the Score board.
  *
- * <p>Bugs: none
+ * <p>Bugs: None known
  *
  * @author Daniel Jones
  */
-public class JobListIterator implements java.util.Iterator{
-	private Listnode<Job> curr; //current Listnode where the iterator points
+public class Scoreboard implements ScoreboardADT{
+	ListADT<Job> list = new JobList(); //TODO Parameters for the JobList
+	int total = 0;
 	
 	/**
-	 * Constructor for the iterator which sets curr to the header node which is
-	 * the beginning of the list.
+	 * This method allows one to add a Job object to list after the job was completed.
 	 *
-	 * @param header header node of the list
-	 */
-	public JobListIterator(Listnode<Job> header) {
-		curr = header;
-	}
-	
-	/**
-	 * Returns the next node in the list
+	 * PRECONDITIONS: A job was completed
+	 * 
+	 * POSTCONDITIONS: The list has one new job at the end
 	 *
-	 * PRECONDITIONS: the list being iterated has a next node
-	 * 
-	 * @return the next Listnode in the list
-	 * @throws NoSuchElementException if no further node exists in the list
+	 * @param job A Job object to be added to list
+	 * @return void
 	 */
-	public Listnode<Job> next(){
-		if(hasNext() == false){
-			throw new NoSuchElementException();
-		}
-		curr = curr.getNext();
-		return curr;
+	public void updateScoreBoard(Job job){
+		list.add(job);
+		total += job.getPoints();
 	}
 	
 	/**
-	 * Checks if there is another node in the list
+	 * This method returns the total score earned by the player by adding the score int of every
+	 * job in list.
+	 *
+	 * PRECONDITIONS: none
 	 * 
-	 * @return true if a next node exists in the list; false otherwise
+	 * POSTCONDITIONS: none
+	 *
+	 * @return The int total, which is the number of earned points.
 	 */
-	public boolean hasNext(){
-		if(curr.getNext() == null){
-			return false;
-		}
-		return true;
+	public int getTotalScore(){
+		return total;
 	}
+	
+	/**
+	 * This method allows one to print information about all completed jobs in a premade format.
+	 *
+	 * PRECONDITIONS: none
+	 * 
+	 * POSTCONDITIONS: Scoreboard is printed
+	 *
+	 * @return void
+	 */
+	public void displayScoreBoard(){
+		System.out.println("Total Score: " + getTotalScore() + "\nThe jobs completed:");
+		for(int i = 0; i < list.size(); ++i){
+			System.out.println("Job Name: " + list.get(i).getJobName());
+			System.out.println("Points earned for this job: " + list.get(i).getPoints());
+			System.out.println("--------------------------------------------");
+		}
+	}
+
 }
+
