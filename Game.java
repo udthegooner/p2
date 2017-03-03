@@ -1,3 +1,25 @@
+/////////////////////////////////////////////////////////////////////////////
+// Semester:         CS367 Spring 2016 
+// PROJECT:          p2
+// FILE:             Game.java
+//
+// TEAM:    #46 Paras
+// Authors: 
+// Author1: Udhbhav Gupta, ugupta23@wisc.edu, ugupta23, Lec 002
+//
+//////////////////////////// 80 columns wide //////////////////////////////////
+
+/**
+ * Maintains the active list of jobs and utilizes the JobSimulator class to 
+ * create new jobs to be added to the end of the job listing. Provides accessor
+ * methods for time currently left in the game, number of jobs on JobList and
+ * total score. Updates jobs chosen by the user and also displays active jobs
+ * and the scoreBoard.
+ *
+ * <p>Bugs: none
+ *
+ * @author Udhbhav
+ */
 public class Game{
 
     /**
@@ -19,9 +41,9 @@ public class Game{
      * duration used to determine the length of the game.
      */
     public Game(int seed, int timeToPlay){
-        /**
-         * TODO: Initializes all member variables
-         */
+        jobSimulator = new JobSimulator(seed);
+        this.timeToPlay = timeToPlay;
+        scoreBoard = new Scoreboard();
     }
 
     /**
@@ -29,8 +51,7 @@ public class Game{
      * @returns the amount of time left in the game.
      */
     public int getTimeToPlay() {
-        //TODO: return the amount of time left
-        return 0;
+        return timeToPlay;
     }
 
     /**
@@ -40,7 +61,7 @@ public class Game{
      *        the remaining duration of the game
      */
     public void setTimeToPlay(int timeToPlay) {
-        //TODO: Setter for amount of time to play
+        this.timeToPlay = timeToPlay;
     }
 
     /**
@@ -50,24 +71,24 @@ public class Game{
      * else returns false
      */
     public boolean isOver(){
-        //TODO: check if the game is over or not
+        if (timeToPlay <= 0)
+        	return true;
         return false;
     }
+    
     /**
      * This method simply invokes the simulateJobs method
      * in the JobSimulator object.
      */
     public void createJobs(){
-        //TODO: Invoke the simulator to create jobs
-
+        jobSimulator.simulateJobs(list, timeToPlay);
     }
 
     /**
      * @returns the length of the Joblist.
      */
     public int getNumberOfJobs(){
-        //TODO: Get the number of jobs in the JobList
-        return 0;
+        return list.size();
     }
 
     /**
@@ -81,10 +102,7 @@ public class Game{
      *      The job to be inserted in the list.
      */
     public void addJob(int pos, Job item){
-        /**
-         * TODO: Add a job in the list
-         * based on position
-         */
+        list.add(pos, item);
     }
 
     /**
@@ -93,7 +111,7 @@ public class Game{
      *      The job to be inserted in the list.
      */
     public void addJob(Job item){
-        //TODO: Add a job in the joblist
+        list.add(item);
     }
 
     /**
@@ -117,8 +135,25 @@ public class Game{
      *      The amount of time the given job is to be worked on for.
      */
     public Job updateJob(int index, int duration){
-        //TODO: As per instructions in comments
-        return null;
+        Job currJob = list.remove(index); //job to be updated
+        
+        //checking that duration isn't greater than total timeunits for the job
+        if (duration > currJob.getTimeUnits())
+            duration = currJob.getTimeUnits();
+ 
+        //checking if duration is greater than timeToPlay
+        if (duration > timeToPlay)
+        	duration = timeToPlay;
+        
+        //setting steps for the job
+        int newSteps = currJob.getSteps() + duration;
+        currJob.setSteps(newSteps);
+        
+        if (currJob.isCompleted())
+        	scoreBoard.updateScoreBoard(currJob);
+        
+        timeToPlay -= duration;
+        return currJob;
     }
 
     /**
@@ -130,24 +165,27 @@ public class Game{
      *
      */
     public void displayActiveJobs(){
-        //TODO: Display all the active jobs
+        System.out.println("Job Listing");
+        for (int i=0; i<list.size(); i++)
+        	System.out.println("At position: " + i + " " 
+        						+ list.get(i).toString());
 
     }
 
     /**
-     * This function simply invokes the displayScoreBoard method in the ScoreBoard class.
+     * This function simply invokes the displayScoreBoard method in the 
+     * ScoreBoard class.
      */
     public void displayCompletedJobs(){
-        //TODO: Display all the completed jobs
-
+    	scoreBoard.displayScoreBoard();
     }
 
     /**
-     * This function simply invokes the getTotalScore method of the ScoreBoard class.
+     * This function simply invokes the getTotalScore method of the 
+     * ScoreBoard class.
      * @return the value calculated by getTotalScore
      */
     public int getTotalScore(){
-        //TODO: Return the total score accumulated
-        return 0;
+        return scoreBoard.getTotalScore();
     }
 }
