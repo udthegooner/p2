@@ -1,13 +1,11 @@
 /////////////////////////////////////////////////////////////////////////////
 // Semester:         CS367 Spring 2016 
 // PROJECT:          P2
-// FILE:             JobListIterator.java
+// FILE:             (file name)
 //
 // TEAM:    46 Paras
 // Authors: 
 // Author1: (Daniel Jones,djones39,lecture 2)
-//////////////////////////// 80 columns wide //////////////////////////////////
-
 import java.util.NoSuchElementException;
 
 /**
@@ -19,16 +17,16 @@ import java.util.NoSuchElementException;
  * @author Daniel Jones
  */
 public class JobListIterator implements java.util.Iterator{
-	private Listnode<Job> curr; //current Listnode where the iterator points
-	
+	Listnode<Job> curr; //current Listnode where the iterator points
+
 	/**
 	 * Constructor for the iterator which sets curr to the header node which is
 	 * the beginning of the list.
 	 *
 	 * @param header header node of the list
 	 */
-	public JobListIterator(Listnode<Job> header) {
-		curr = header;
+	public JobListIterator(Listnode<Job> head) {
+		curr = head;
 	}
 	
 	/**
@@ -38,7 +36,7 @@ public class JobListIterator implements java.util.Iterator{
 	 * 
 	 * @return the next Listnode in the list
 	 * @throws NoSuchElementException if no further node exists in the list
-	 */
+	 */	
 	public Listnode<Job> next(){
 		if(hasNext() == false){
 			throw new NoSuchElementException();
