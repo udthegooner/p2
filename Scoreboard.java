@@ -15,7 +15,8 @@
  * @author Daniel Jones
  */
 public class Scoreboard implements ScoreboardADT{
-	ListADT<Job> list;
+	JobList list;
+	int total;
 	
 	/**
 	 * This method allows one to add a Job object to list after the job was completed.
@@ -42,7 +43,7 @@ public class Scoreboard implements ScoreboardADT{
 	 * @return The int total, which is the number of earned points.
 	 */
 	public int getTotalScore(){
-		int total = 0;
+		total = 0;
 		for(int i = 0; i < list.size(); ++i){
 			total = total + list.get(i).getPoints();
 		}
@@ -59,8 +60,11 @@ public class Scoreboard implements ScoreboardADT{
 	 * @return void
 	 */
 	public void displayScoreBoard(){
+		System.out.println("Total Score: " + getTotalScore() + "\nThe jobs completed:");
 		for(int i = 0; i < list.size(); ++i){
-			System.out.println("At position: " + i + " " + list.get(i).toString());
+			System.out.println("Job Name: " + list.get(i).getJobName());
+			System.out.println("Points earned for this job: " + list.get(i).getPoints());
+			System.out.println("--------------------------------------------");
 		}
 	}
 
