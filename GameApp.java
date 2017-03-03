@@ -2,7 +2,8 @@ import java.util.Scanner;
 
 public class GameApp {
 
-	public static Game game;
+	private static Game game;
+	private Boolean gameOver = false; // True when game is over
 
 	/**
 	 * Scanner instance for reading input from console
@@ -30,23 +31,16 @@ public class GameApp {
 	 *            Command line arguments <seed> <timeToPlay>
 	 */
 	public static void main(String[] args) {
+		
+		int randSeed = -1; // Stores the random number generator seed
+		int duration = -1; // Stores the duration of the game
 
-		// Stores the random number generator seed as String.
-		int randSeed = -1;
-		// Stores the positive integer indication duration as String.
-		int duration = -1;
-		// True when game is over.
-		Boolean gameOver = false;
+		String seedPrompt = "Please enter a seed number: ";
+		randSeed = getIntegerInput(seedPrompt);
 
-		try {
-			randSeed = Integer.parseInt(args[0]);
-			duration = Integer.parseInt(args[1]);
-		} catch (NumberFormatException e) {
-			// End the program if arguments are not int.
-			System.out.println("Invalid argument, program terminated.");
-			System.exit(0);
-		}
-
+		String durationPrompt = "Please enter the duration: ";
+		duration = getIntegerInput(durationPrompt);
+		
 		// Exit if seed and duration are not positive.
 		if (!(randSeed > 0 && duration > 0)) {
 			System.out.println("Negative argument, program terminated.");
