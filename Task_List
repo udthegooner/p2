@@ -92,9 +92,9 @@ Task List Usage:
   
 + DJ Task 4: Write a JobListIterator class
   Make sure that it is implemented as described in the assignment.
-  - add a constructor 
-  - hasNext()
-  - next()
+  + add a constructor 
+  + hasNext()
+  + next()
   
 + MP Task 5: Add a test to your Test_JobList class to test that the 
   JobList can return an iterator and that the JobListIterator
