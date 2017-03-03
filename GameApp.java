@@ -63,7 +63,29 @@ public class GameApp {
 	 * Add Comments as per implementation
 	 */
 	private static void start() {
-		// TODO: The interactive game logic goes here
+		//Keep track of number of iterations
+		int iterationCount = 0;
+		
+		//Display how much time remains in the game
+		System.out.println(game.getTimeToPlay());
+		
+		
+		if (iterationCount == 0) {
+		//Use the game object to create new jobs
+		game.createJobs();
+		iterationCount++;
+		}
+		
+		//Use the game object to display jobs left in the game
+		System.out.println("You have " + game.getNumberOfJobs()
+						   + " left in the game!");
+		
+		//Use the game object to display all active jobs in the game
+		game.displayActiveJobs();
+		
+		//Prompt the user for an index of a job to work on
+		//Time penalty for picking a job that is not at index 0
+		System.out.println("Select a job to work on: ");
 	}
 
 	/**
