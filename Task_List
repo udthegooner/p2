@@ -57,7 +57,7 @@ Task List Usage:
         QN    = Quinn Nicholson
               =  
               
-+ YB Task 2: Define the JobList class so that it implements the ListADT
++ YB CL MP Task 2: Define the JobList class so that it implements the ListADT
   as described in p0.  List sub-tasks here.
   
     + Create an Eclipse project for p2
@@ -107,12 +107,12 @@ Task List Usage:
 + UD Task 7: Complete the Game class implementation by completing the
   TODO tags.
   
-+ Task 8: Re-read the assignment and map out the actions that must
++ ALL Task 8: Re-read the assignment and map out the actions that must
   happen in the GameApp (main) class.  There is much to do here and
   it may be much more convenient to write methods and call them 
   from the main method.
   
-+ Task 9: Implement the GameApp class incrementally.  
++ MP Task 9: Implement the GameApp class incrementally.  
   Compile and run after each of these items
   + main: get the command line arguments (use the getIntegerInput method)
   + Add the Welcome message as output
@@ -120,7 +120,7 @@ Task List Usage:
     + Try calling Game methods to see if Game was constructed
       and initialized correctly.
       
-+ UD Task 10: Define a main_menu_loop() method: 
++ UD MP CL Task 10: Define a main_menu_loop() method: 
   Put code for one iteration of game play
   + Get the outputs to display in the right order
   + Add a call to this method from the main method
