@@ -2,8 +2,7 @@ import java.util.Scanner;
 
 public class GameApp {
 
-	private static Game game;
-	private Boolean gameOver = false; // True when game is over
+	public static Game game;
 
 	/**
 	 * Scanner instance for reading input from console
@@ -31,16 +30,23 @@ public class GameApp {
 	 *            Command line arguments <seed> <timeToPlay>
 	 */
 	public static void main(String[] args) {
-		
-		int randSeed = -1; // Stores the random number generator seed
-		int duration = -1; // Stores the duration of the game
 
-		String seedPrompt = "Please enter a seed number: ";
-		randSeed = getIntegerInput(seedPrompt);
+		// Stores the random number generator seed as String.
+		int randSeed = -1;
+		// Stores the positive integer indication duration as String.
+		int duration = -1;
+		// True when game is over.
+		Boolean gameOver = false;
 
-		String durationPrompt = "Please enter the duration: ";
-		duration = getIntegerInput(durationPrompt);
-		
+		try {
+			randSeed = Integer.parseInt(args[0]);
+			duration = Integer.parseInt(args[1]);
+		} catch (NumberFormatException e) {
+			// End the program if arguments are not int.
+			System.out.println("Invalid argument, program terminated.");
+			System.exit(0);
+		}
+
 		// Exit if seed and duration are not positive.
 		if (!(randSeed > 0 && duration > 0)) {
 			System.out.println("Negative argument, program terminated.");
@@ -56,6 +62,7 @@ public class GameApp {
 		// As long as the game is not over, go through the gameplay loop.
 		while (!gameOver) {
 			gameApp.start();
+			main_menu_loop(game);
 		}
 	}
 
@@ -63,29 +70,7 @@ public class GameApp {
 	 * Add Comments as per implementation
 	 */
 	private static void start() {
-		//Keep track of number of iterations
-		int iterationCount = 0;
-		
-		//Display how much time remains in the game
-		System.out.println(game.getTimeToPlay());
-		
-		
-		if (iterationCount == 0) {
-		//Use the game object to create new jobs
-		game.createJobs();
-		iterationCount++;
-		}
-		
-		//Use the game object to display jobs left in the game
-		System.out.println("You have " + game.getNumberOfJobs()
-						   + " left in the game!");
-		
-		//Use the game object to display all active jobs in the game
-		game.displayActiveJobs();
-		
-		//Prompt the user for an index of a job to work on
-		//Time penalty for picking a job that is not at index 0
-		System.out.println("Select a job to work on: ");
+		// TODO: The interactive game logic goes here
 	}
 
 	/**
@@ -104,5 +89,30 @@ public class GameApp {
 			System.out.print(STDIN.next() + " is not an int.  Please enter an integer.");
 		}
 		return STDIN.nextInt();
+	}
+
+	private static void main_menu_loop(Game game) {
+
+		// The job to work on.
+		int jobToWork = 0;
+		// Time to work on job.
+		int timeToWork = 0;
+		// Worked job.
+		Job jobWorked;
+
+		System.out.println("You have " + game.getTimeToPlay() + " left in the game!");
+
+		// Create the jobs then display active jobs.
+		game.createJobs();
+		game.displayActiveJobs();
+
+		// Wait for user input on which job to do. (NOTE, NO ERROR HANDLING).
+		System.out.print("\nSelect a job to work on: ");
+		jobToWork = STDIN.nextInt();
+		System.out.print("For how long would you like to work on this job?: ");
+		timeToWork = STDIN.nextInt();
+		
+		jobWorked = game.updateJob(jobToWork, timeToWork);
+
 	}
 }

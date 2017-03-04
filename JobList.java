@@ -1,4 +1,3 @@
-
 ///////////////////////////////////////////////////////////////////////////////
 // Semester:         CS367 Lec001 Spring 2017 
 //                   CS367 Lec002 Spring 2017
@@ -9,7 +8,7 @@
 //         Yuchen Bai
 //
 //////////////////////////// 80 columns wide //////////////////////////////////
-import java.util.Iterator;
+
 
 /**
  * Implements the JobListADT and defines the container object JobList as a
@@ -40,7 +39,8 @@ public class JobList<Job> implements ListADT<Job> {
 	 * 
 	 */
 	public JobList(Listnode<Job> head) {
-		this.head = head;
+		this.head = new Listnode<Job>(null);
+		//Initialize to 1 unless header node
 		if (this.head.getData() != null) {
 			numItems = 1;
 		}
@@ -90,23 +90,27 @@ public class JobList<Job> implements ListADT<Job> {
 			throw new IllegalArgumentException();
 		}
 
-		// Base case, head is null.
-		if (curr == null) {
-			head = new Listnode<Job>(item);
-			head.setNext(null);
+		//create new node with item data, next field left null 
+		Listnode<Job> newNode = new Listnode<Job>(item);
+
+		//If the list is empty, set dummy header's next field
+		//to point to node to be added
+		if (isEmpty()) {
+			head.setNext(newNode);
+			numItems++;
+			return;
 		}
 
 		// Traverse through list until the
 		// link to the next node is null (end of list)
-		while (curr.getNext() != null)
+		while (curr.getNext() != null) {
 			curr = curr.getNext();
+		}
 
-		// Create new Listnode, pointed by "next" field of
-		// the last node in the list (head if empty)
-		curr.setNext(new Listnode<Job>(item));
+		// the last node in the list points to the newNode
+		curr.setNext(newNode);
 
-		// Create new Listnode, pointed by "next" field of
-		// the last node in the list (head if empty)
+		//Increment numItems
 		numItems++;
 	}
 
@@ -139,7 +143,7 @@ public class JobList<Job> implements ListADT<Job> {
 	@Override
 	public void add(int pos, Job item) {
 		// Check for bad position
-		if (pos < 0 || pos > numItems) {
+		if (pos < 0 || pos > size() - 1) {
 			throw new IndexOutOfBoundsException();
 		}
 		// Throw Exception
@@ -147,7 +151,7 @@ public class JobList<Job> implements ListADT<Job> {
 			throw new IllegalArgumentException();
 		}
 		// If asked to add to end, let other add method do the work
-		if (pos == numItems) {
+		if (pos == size()) {
 			add(item);
 			return;
 		}
@@ -158,16 +162,13 @@ public class JobList<Job> implements ListADT<Job> {
 		// Create a new Listnode for item
 		Listnode<Job> newNode = new Listnode<Job>(item);
 
-		// Find node n in position pos - 1
-		// Counting the header as being in position - 1
-		for (int i = 0; i < pos - 2; i++) {
+
+		// Find the node before pos
+		for (int i = 0; i < pos - 1; i++) {
 			curr = curr.getNext();
 		}
 
-		// set newNode's next field to point to node after n
-		newNode.setNext(curr.getNext());
-
-		// set n's "next" field to point to the new node
+		// set "next" field to point to the new node
 		curr.setNext(newNode);
 
 		// Increment numItems
@@ -197,6 +198,7 @@ public class JobList<Job> implements ListADT<Job> {
 		if (item == null) {
 			throw new IllegalArgumentException();
 		}
+
 		// Traverse through list until the last node,
 		// Return true if item equals the current node's data
 		while (curr.getNext() != null) {
@@ -223,7 +225,7 @@ public class JobList<Job> implements ListADT<Job> {
 	@Override
 	public Job get(int pos) {
 		// Check for bad pos range
-		if (pos < 0 || pos >= numItems) {
+		if (pos < 0 || pos > size() - 1) {
 			throw new IndexOutOfBoundsException();
 		}
 		// Assign head to current node
@@ -244,11 +246,13 @@ public class JobList<Job> implements ListADT<Job> {
 	 */
 	@Override
 	public boolean isEmpty() {
-		return (numItems == 0);
+		return numItems == 0;
 	}
-
+	
 	/**
 	 * Removes the item at the given position
+	 * 
+	 * 
 	 * 
 	 * @param pos
 	 *            the position of the item to be deleted from the list
@@ -260,33 +264,25 @@ public class JobList<Job> implements ListADT<Job> {
 	@Override
 	public Job remove(int pos) {
 		// Check for bad pos range
-		if (pos < 0 || pos >= size()) {
+		if (pos < 0 || pos > size() - 1) {
 			throw new IndexOutOfBoundsException();
 		}
 
-		//Create the curr listnode.
+		//Traversal node
 		Listnode<Job> curr = head;
-		
-		// Special case if the position is 0.
-		if (pos == 0) {
-			Job toReturn = curr.getData();
-			head = curr.getNext();
-			
-			// Decrement numItems by 1
-			numItems--;
-			return toReturn;
+		Listnode<Job> toRemove;
+		//Find node before the node to be removed
+		for (int i = 0; i < pos - 1; i++) {
+			curr = curr.getNext();
 		}
-		
-		//Iterate through until just before the node to return.
-		else {
-			for (int i = 0; i < pos - 1; i++) {
-				curr = curr.getNext();
-			}
-			// Decrement numItems by 1
-			numItems--;
-			return curr.getNext().getData();
-		}
+		toRemove = curr;
+		//node before set to node after the node to be removed
+		curr = curr.getNext().getNext();
 
+		// Decrement numItems by 1
+		numItems--;
+
+		return toRemove.getNext().getData();
 	}
 
 	/**
@@ -296,9 +292,6 @@ public class JobList<Job> implements ListADT<Job> {
 	 */
 	@Override
 	public int size() {
-
 		return numItems;
-
 	}
-
 }
