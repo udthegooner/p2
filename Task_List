@@ -1,7 +1,7 @@
 /************************************************************
   p2 Task List (must be completed and submitted for Team Building 102)
   
-  Team Number: ____46___   Team Name: _____________Paras__________
+  Team Number: 46  Team Name: Paras
 
 In an effort to help students improve the process of learning to
 to work together in their teams and as a way to provide each team with 
@@ -39,7 +39,7 @@ Task List Usage:
   to discuss how you can best complete this assignment.  Do you want 
   to work in smaller groups on specific tasks?
      
-- Task 1: Assign Code Letters for each Team Member
++ Task 1: Assign Code Letters for each Team Member
 
   Each team member is assigned a code letter.
   It can be the first letter of your name or any other unique letter.
@@ -54,41 +54,41 @@ Task List Usage:
         UD    = Udhbhav Gupta
         CL    = Collin Lacy
         MP    = Matthew Perry
-              =
-              =
+        QN    = Quinn Nicholson
+              =  
               
 + YB Task 2: Define the JobList class so that it implements the ListADT
   as described in p0.  List sub-tasks here.
   
-    oYB Create an Eclipse project for p2
-    oYB Download provided files, need these for sure:
-      oYB ListADT interface
-      oYB Listnode class
-      oYB Job class
-    oYB Add p2 files to your p2 project
-    oYB make sure that all classes and interfaces are in the default package
-    oYB Create a new class named JobList and add stub methods for
+    + Create an Eclipse project for p2
+    + Download provided files, need these for sure:
+      + ListADT interface
+      + Listnode class
+      + Job class
+    + Add p2 files to your p2 project
+    + make sure that all classes and interfaces are in the default package
+    + Create a new class named JobList and add stub methods for
       all required methods of the ListADT
-    oYB Add declaration to "implements ListADT<Job>" to this class
-    oYB implement each method
-       oYB add(item)
-       oYB add(pos,item)
-       oYB remove(pos)
-       oYB contains(item)
-       oYB get(pos)
-       oYB isEmpty()
-       oYB size()
+    + Add declaration to "implements ListADT<Job>" to this class
+    + implement each method
+       + add(item)
+       + add(pos,item)
+       + remove(pos)
+       + contains(item)
+       + get(pos)
+       + isEmpty()
+       + size()
        
 + MP Task 3: Write a Test_JobList class 
   This can be written before Task 2 is finished.
   Just write test methods that will pass when JobList is finished
-  - add a main method
-  - add a test to create a JobList
-  - test add(item) method
-  - test add(pos,item) method
-  - test ...
-  - test ...
-  - test ...
+  + add a main method
+  + add a test to create a JobList
+  + test add(item) method
+  + test add(pos,item) method
+  + test ...
+  + test ...
+  + test ...
   
 + DJ Task 4: Write a JobListIterator class
   Make sure that it is implemented as described in the assignment.
@@ -114,24 +114,24 @@ Task List Usage:
   
 + Task 9: Implement the GameApp class incrementally.  
   Compile and run after each of these items
-  - main: get the command line arguments (use the getIntegerInput method)
-  - Add the Welcome message as output
-  - main: construct a Game instance with the command line values
-    - Try calling Game methods to see if Game was constructed
+  + main: get the command line arguments (use the getIntegerInput method)
+  + Add the Welcome message as output
+  + main: construct a Game instance with the command line values
+    + Try calling Game methods to see if Game was constructed
       and initialized correctly.
       
-O UD Task 10: Define a main_menu_loop() method: 
++ UD Task 10: Define a main_menu_loop() method: 
   Put code for one iteration of game play
-  - Get the outputs to display in the right order
-  - Add a call to this method from the main method
-  - Get input value and echo to screen
-  - output the job list
+  + Get the outputs to display in the right order
+  + Add a call to this method from the main method
+  + Get input value and echo to screen
+  + output the job list
 
-- ADD MORE SUB-TASKS TO ANY OF THE ABOVE TASKS
++ ADD MORE SUB-TASKS TO ANY OF THE ABOVE TASKS
 
-- ADD MORE TASKS AS YOU IDENTIFY WORK THAT MUST BE DONE
++ ADD MORE TASKS AS YOU IDENTIFY WORK THAT MUST BE DONE
 
-- DON'T FORGET TO SUBMIT EARLY AND OFTEN SO THAT THERE 
++ DON'T FORGET TO SUBMIT EARLY AND OFTEN SO THAT THERE 
   IS NO RISK OF MISSING THE SUBMISSION DEADLINE.
     
 *****************************************************************/
