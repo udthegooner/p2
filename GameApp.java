@@ -1,5 +1,31 @@
 import java.util.Scanner;
 
+/////////////////////////////////////////////////////////////////////////////
+// Semester:         CS367 Spring 2016 
+// PROJECT:          (project name)
+// FILE:             (file name)
+//
+// TEAM:    #46 Paras
+// Authors: (Be sure to check if programming teams are allowed)
+// Author1: Collin Lacy
+// Author2: Matthew Perry
+//
+// ---------------- OTHER ASSISTANCE CREDITS 
+//
+//
+//
+//
+//////////////////////////// 80 columns wide //////////////////////////////////
+
+/**
+ * This class runs the game. The game takes the command line arguments as 
+ * random seed and game duration.  the game ends when time runs out. Follows
+ * the flow of the Game and generates jobs to be complete
+ * 
+ * <p> Bugs; None known
+ *
+ * @author 
+ */
 public class GameApp {
 
 	// True when game is over.
@@ -69,7 +95,9 @@ public class GameApp {
 	}
 
 	/**
-	 * Add Comments as per implementation
+	 * Starts the game and prompts requests for jobs. The meathod also follows 
+	 * when the game has runout of time, the meathod ends the game and displays 
+	 * the player's final score.
 	 */
 	private static void start() {
 		// The job to work on.
