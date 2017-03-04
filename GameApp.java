@@ -9,6 +9,7 @@ import java.util.Scanner;
 // Authors: (Be sure to check if programming teams are allowed)
 // Author1: Collin Lacy
 // Author2: Matthew Perry
+// Author2: (name2,email2,netID2,lecture number2)
 //
 // ---------------- OTHER ASSISTANCE CREDITS 
 //
@@ -24,7 +25,7 @@ import java.util.Scanner;
  * 
  * <p> Bugs; None known
  *
- * @author 
+ * @author Quinn Breit-Nicholson
  */
 public class GameApp {
 
