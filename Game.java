@@ -25,7 +25,7 @@ public class Game{
     /**
      * A list of all jobs currently in the queue.
      */
-    private ListADT<Job> list;
+    private ListADT<Job> list = new JobList<Job>(null);
     /**
      * Whenever a Job is completed it is added to the scoreboard
      */
@@ -149,9 +149,14 @@ public class Game{
         int newSteps = currJob.getSteps() + duration;
         currJob.setSteps(newSteps);
         
-        if (currJob.isCompleted())
+        if (currJob.isCompleted()) {
         	scoreBoard.updateScoreBoard(currJob);
-        
+        	System.out.println("Job completed! Current Score: " + scoreBoard.getTotalScore());
+        	System.out.println("Total Score: " + scoreBoard.getTotalScore());
+        	System.out.println("The jobs completed: ");
+        	scoreBoard.displayScoreBoard();
+        }
+        	
         timeToPlay -= duration;
         return currJob;
     }
