@@ -190,17 +190,21 @@ public class GameApp {
 	 * Displays the prompt and returns the integer entered by the user to the
 	 * standard input stream.
 	 *
-	 * Does not return until the user enters an integer. Does not check the
-	 * integer value in any way.
+	 * If the input isn't an int, the program terminates.
 	 * 
 	 * @param prompt
 	 *            The user prompt to display before waiting for this integer.
 	 */
 	public static int getIntegerInput(String prompt) {
-		System.out.print(prompt);
-		while (!STDIN.hasNextInt()) {
-			System.out.print(STDIN.next() + " is not an int.  Please enter an integer: ");
+		int input = 0;
+		try {
+			System.out.print(prompt);
+			input = STDIN.nextInt();
 		}
-		return STDIN.nextInt();
+		catch (InputMismatchException  e) {
+			System.out.println("Invalid argument, program terminated.");
+			System.exit(0);
+		}
+		return input;
 	}
 }
