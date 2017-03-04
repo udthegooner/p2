@@ -25,7 +25,7 @@ public class Game{
     /**
      * A list of all jobs currently in the queue.
      */
-    private ListADT<Job> list = new JobList<Job>(new Listnode(null));
+    private ListADT<Job> list = new JobList<Job>(null);
     /**
      * Whenever a Job is completed it is added to the scoreboard
      */
