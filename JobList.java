@@ -1,26 +1,34 @@
+import java.util.Iterator;
+
 ///////////////////////////////////////////////////////////////////////////////
-// Semester:         CS367 Lec001 Spring 2017 
-//                   CS367 Lec002 Spring 2017
+// Semester:         CS367 Spring 2017
 // PROJECT:          p2
 // FILE:             JobList.java
 //
-// Author: Collin Lacy
-//         Yuchen Bai
+// TEAM:    #46 Paras
+// Authors: 
+// Author1: Udhbhav Gupta, ugupta23@wisc.edu, ugupta23, Lec 002
+// Author2: Collin Lacy, clacy@wisc.edu, clacy; Lec 001
+// Author3: Yuchen Bai
+// Author4: Matthew Perry, mperry3@wisc.edu, mperry3, Lec 002
 //
 //////////////////////////// 80 columns wide //////////////////////////////////
 
 /**
  * Implements the JobListADT and defines the container object JobList as a
- * singly linked list of Job.
+ * singly linked list of Job objects.
  * 
  * Provides user with methods to determine the size of the list, check if the
- * list item is empty, add a Job to the list, remove a Job from a particular
+ * list is empty, add a Job to the list, remove a Job from a particular
  * index position and access a Job at a particular index position.
  *
  * <p>
  * Bugs: None
  *
- * @author Collin Lacy Yuchen Bai Matthew Perry Udhbhav Gupta
+ * @author Collin Lacy 
+ * 		   Yuchen Bai 
+ * 		   Matthew Perry 
+ *         Udhbhav Gupta
  */
 
 public class JobList<Job> implements ListADT<Job> {
@@ -30,7 +38,7 @@ public class JobList<Job> implements ListADT<Job> {
 
 	/**
 	 * Constructor for a new JobList object which defines a new singly linked
-	 * list of nodes. Also sets the number of items in the list.
+	 * list of nodes. Also sets the number of items in the list to 0.
 	 * 
 	 */
 	public JobList() {
@@ -39,11 +47,11 @@ public class JobList<Job> implements ListADT<Job> {
 	}
 
 	/**
-	 * Constructor for Job iterator
+	 * Creates and returns a new iterator for the joblist
 	 * 
 	 * @return reference to Job iterator
 	 */
-	public JobListIterator iterator() {
+	public Iterator<Job> iterator() {
 
 		return new JobListIterator(header);
 	}
@@ -53,11 +61,10 @@ public class JobList<Job> implements ListADT<Job> {
 	 * 
 	 * Implementation:
 	 *
-	 * Create a new Listnode for Job, pointed to by the "next" field of the last
-	 * node in the list (which will be the header node if the list is empty)
+	 * Create a new Listnode for Job, pointed to by the next field of the last
+	 * node in the list
 	 * 
 	 * Increment numItems.
-	 * 
 	 * 
 	 * @param item
 	 *            an item to add to the list
@@ -89,28 +96,26 @@ public class JobList<Job> implements ListADT<Job> {
 	/**
 	 * Add an item at any position in the list
 	 * 
-	 * 
 	 * Implementation:
 	 * 
 	 * Check for a bad position and if so, throw an exception. Otherwise: If
 	 * we're being asked to add to the end of the list, call the "add to the
-	 * end" method Otherwise: Find the node n in position pos - 1 (counting the
-	 * header node as being in position - 1)
+	 * end" method Otherwise: Find the node n in position pos - 1.
 	 * 
-	 * Create a new Listnode for item, whose next field points to the node after
-	 * n and set n's "next" field to point to the new node
+	 * Create a new Listnode for item, whose next field points to the node 
+	 * after n and set n's "next" field to point to the new node
 	 *
 	 * @param item
 	 *            an item to be added to the list
 	 * 
 	 * @param pos
-	 *            position at which the item must be added. Indexing starts from
-	 *            0
+	 *            position at which the item must be added. Indexing starts
+	 *            from 0
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if item is null
 	 * @throws IndexOutOfBoundsException
-	 *             if pos is less than 0 or greater than size() - 1
+	 *             if pos is less than 0 or greater than size()
 	 */
 	@Override
 	public void add(int pos, Job item) {
@@ -180,15 +185,15 @@ public class JobList<Job> implements ListADT<Job> {
 	}
 
 	/**
-	 * Returns the position of the item to return
-	 * 
-	 * Implementation:
+	 * Returns the item at required position
 	 * 
 	 * @param pos
 	 *            position of the item to be returned
 	 * 
 	 * @throws IndexOutOfBoundsException
 	 *             if position is less than 0 or greater than size() - 1
+	 *             
+	 * @return Job at the required position
 	 * 
 	 */
 	@Override
@@ -212,7 +217,7 @@ public class JobList<Job> implements ListADT<Job> {
 	/**
 	 * Returns true if the list is empty
 	 * 
-	 * @return value is true if the list is empty else false
+	 * @return true if the list is empty else false
 	 */
 	@Override
 	public boolean isEmpty() {
@@ -221,9 +226,7 @@ public class JobList<Job> implements ListADT<Job> {
 
 	/**
 	 * Removes the item at the given position
-	 * 
-	 * 
-	 * 
+	 *
 	 * @param pos
 	 *            the position of the item to be deleted from the list
 	 * 
@@ -258,7 +261,7 @@ public class JobList<Job> implements ListADT<Job> {
 	}
 
 	/**
-	 * Returns the number of items in the list or zero
+	 * Returns the number of items in the list
 	 * 
 	 * @return the number of items in this list
 	 */
@@ -267,4 +270,5 @@ public class JobList<Job> implements ListADT<Job> {
 		return numItems;
 	}
 }
+
 

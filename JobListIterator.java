@@ -1,19 +1,18 @@
-
-/////////////////////////////////////////////////////////////////////////////
-// Semester:         CS367 Spring 2016 
-// PROJECT:          P2
+///////////////////////////////////////////////////////////////////////////////
+// Semester:         CS367 Spring 2017 
+// PROJECT:          p2
 // FILE:             JobListIterator.java
 //
-// TEAM:    46 Paras
+// TEAM:    #46 Paras
 // Authors: 
 // Author1: (Daniel Jones,djones39,lecture 2)
+//
 //////////////////////////// 80 columns wide //////////////////////////////////
 
 import java.util.NoSuchElementException;
 
 /**
- * Defines the iterator for a JobList by providing access to next and hasNext
- * methods.
+ * Defines a direct access iterator for JobList with next and hasNext methods.
  *
  * <p>
  * Bugs: none

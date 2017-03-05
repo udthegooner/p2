@@ -1,12 +1,12 @@
-/////////////////////////////////////////////////////////////////////////////
-// Semester:         CS367 Spring 2016 
+///////////////////////////////////////////////////////////////////////////////
+// Semester:         CS367 Spring 2017 
 // PROJECT:          p2
 // FILE:             GameApp.java
 //
 // TEAM:    #46 Paras
 // Authors: 
 // Author1: Udhbhav Gupta, ugupta23@wisc.edu, ugupta23, Lec 002
-// Author2: Collin Lacy, clacy@wisc.edu, clacy; Lec 003
+// Author2: Collin Lacy, clacy@wisc.edu, clacy; Lec 001
 // Author3: Matthew Perry, mperry3@wisc.edu, mperry3, Lec 002
 //
 //////////////////////////// 80 columns wide //////////////////////////////////
@@ -14,9 +14,10 @@
 import java.util.Scanner;
 
 /**
- * This class runs the game. The game takes the command line arguments as random
- * seed and game duration. the game ends when time runs out. Follows the flow of
- * the Game and generates jobs to be complete
+ * This class runs the game. The game takes command line arguments for random
+ * seed and game duration. The game starts, creating jobs with priorities,
+ * prompts user for a job to work on and awards score for completed jobs.
+ * The game runs for the specified duration.
  * 
  * <p>
  * Bugs; None known
@@ -25,7 +26,7 @@ import java.util.Scanner;
  */
 public class GameApp {
 
-	private static Game game;
+	private static Game game; //game instance
 
 	/**
 	 * Scanner instance for reading input from console
@@ -56,7 +57,8 @@ public class GameApp {
 		
 		int randSeed = -1; // Stores the random number generator seed
 		int duration = -1; // Stores the duration of the game
-
+		
+		//parsing randSeed and duration from command line arguments
 		try {
 			if (args.length > 0){
 				randSeed = Integer.parseInt(args[0]);
@@ -79,9 +81,13 @@ public class GameApp {
 
 		// Intro message.
 		System.out.println("Welcome to the Job Market!");
-
+		
+		//running the game
 		gameApp.start();
-		System.out.print("Game Over!\nYour final score: " + game.getTotalScore());
+		
+		//game over message
+		System.out.print("Game Over!\nYour final score: " 
+						+ game.getTotalScore());
 	}
 	
 
@@ -94,24 +100,26 @@ public class GameApp {
 		game.createJobs();
 		
 		// loop that runs until game is over 
-		while (!game.isOver()){
+		while (!game.isOver()) {
 			
-			System.out.printf("You have %d left in the game!\n", game.getTimeToPlay());
+			System.out.printf("You have %d left in the game!\n", 
+							game.getTimeToPlay());
 			game.displayActiveJobs();
 			
 			//choosing job
 			String jobPrompt = "\nSelect a job to work on: ";
 			int jobNum = getIntegerInput(jobPrompt);
 			if (jobNum < 0 || jobNum >= game.getNumberOfJobs()) {
-				System.out.println("Incorrect argument, program terminated.");
+				System.out.println("Invalid argument, program terminated.");
 				System.exit(0);
 			}
 			
 			//choosing duration
-			String durationPrompt = "For how long would you like to work in this job?: ";
+			String durationPrompt = "For how long would you like to work "
+									+ "in this job?: ";
 			int jobDuration = getIntegerInput(durationPrompt);
 			if (jobDuration <= 0 ) {
-				System.out.println("Incorrect argument, program terminated.");
+				System.out.println("Invalid argument, program terminated.");
 				System.exit(0);
 			}
 			
@@ -126,8 +134,8 @@ public class GameApp {
 			}
 			//incomplete job	
 			else {
-				String insertPrompt = "At what position would you like to insert"
-										+ " the job back into the list?\n";
+				String insertPrompt = "At what position would you like to "
+									+ "insert the job back into the list?\n";
 				int insertPos = getIntegerInput(insertPrompt);
 				game.addJob(insertPos, chosenJob);
 				game.createJobs();
@@ -150,7 +158,8 @@ public class GameApp {
 	public static int getIntegerInput(String prompt) {
 		System.out.print(prompt);
 		while (!STDIN.hasNextInt()) {
-			System.out.print(STDIN.next() + " is not an int.  Please enter an integer.");
+			System.out.print(STDIN.next() + " is not an int.  "
+					+ "Please enter an integer.");
 		}
 		return STDIN.nextInt();
 	}

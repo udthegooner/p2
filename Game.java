@@ -1,5 +1,5 @@
-/////////////////////////////////////////////////////////////////////////////
-// Semester:         CS367 Spring 2016 
+///////////////////////////////////////////////////////////////////////////////
+// Semester:         CS367 Spring 2017
 // PROJECT:          p2
 // FILE:             Game.java
 //
@@ -72,9 +72,7 @@ public class Game{
      * else returns false
      */
     public boolean isOver(){
-        if (timeToPlay <= 0)
-        	return true;
-        return false;
+        return timeToPlay <= 0;
     }
     
     /**
@@ -106,7 +104,7 @@ public class Game{
     	int penalty; //time penalty
     	if (pos < 0 || pos > list.size()){
     		penalty = list.size();
-    		list.add(item);
+    		addJob(item);
     	}
     	else{
     		penalty = pos;
