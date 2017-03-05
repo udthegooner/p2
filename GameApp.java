@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /////////////////////////////////////////////////////////////////////////////
@@ -19,13 +20,14 @@ import java.util.Scanner;
 //////////////////////////// 80 columns wide //////////////////////////////////
 
 /**
- * This class runs the game. The game takes the command line arguments as 
- * random seed and game duration.  the game ends when time runs out. Follows
- * the flow of the Game and generates jobs to be complete
+ * This class runs the game. The game takes the command line arguments as random
+ * seed and game duration. the game ends when time runs out. Follows the flow of
+ * the Game and generates jobs to be complete
  * 
- * <p> Bugs; None known
+ * <p>
+ * Bugs; None known
  *
- * @author Quinn Breit-Nicholson
+ * @author Quinn Breit-Nicholson Matthew Perry
  */
 public class GameApp {
 
@@ -96,8 +98,8 @@ public class GameApp {
 	}
 
 	/**
-	 * Starts the game and prompts requests for jobs. The meathod also follows 
-	 * when the game has runout of time, the meathod ends the game and displays 
+	 * Starts the game and prompts requests for jobs. The meathod also follows
+	 * when the game has runout of time, the meathod ends the game and displays
 	 * the player's final score.
 	 */
 	private static void start() {
@@ -138,29 +140,31 @@ public class GameApp {
 		game.displayActiveJobs();
 		System.out.println("");
 
-		while (!jobIsValid) {
-			// Wait for user input on which job to do.
-			jobToWork = getIntegerInput(whichJobPrompt);
+		// Wait for user input on which job to do.
+		jobToWork = getIntegerInput(whichJobPrompt);
+		try {
 			if (jobToWork < 0 || jobToWork > game.getNumberOfJobs()) {
-				jobIsValid = false;
+				throw new IndexOutOfBoundsException();
 			}
-			else {
-				jobIsValid = true;
-			}
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Invalid index, program terminated.");
+			System.exit(0);
 		}
 
-		// Check the index of the user's job choice, penalize by index
-		// if not 0.
 		if (jobToWork != 0) {
 			game.setTimeToPlay(game.getTimeToPlay() - jobToWork);
 		}
 
-		// Length of time to work.
-		while (!timeIsValid) {
-			// Wait for user input on steps for job.
-			timeToWork = getIntegerInput(jobTimePrompt);
-			timeIsValid = true;
-		}
+		// Wait for user input on steps for job.
+	    timeToWork = getIntegerInput(jobTimePrompt);
+	    try {
+	      if (timeToWork < 0) {
+	       throw new IndexOutOfBoundsException(); 
+	      }
+	    } catch (IndexOutOfBoundsException e) {
+	        System.out.println("Invalid index, program terminated.");
+	        System.exit(0);
+	    }
 
 		// Do the job.
 		jobWorked = game.updateJob(jobToWork, timeToWork);
@@ -200,8 +204,7 @@ public class GameApp {
 		try {
 			System.out.print(prompt);
 			input = STDIN.nextInt();
-		}
-		catch (InputMismatchException  e) {
+		} catch (InputMismatchException e) {
 			System.out.println("Invalid argument, program terminated.");
 			System.exit(0);
 		}
