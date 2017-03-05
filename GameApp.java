@@ -1,5 +1,28 @@
+/////////////////////////////////////////////////////////////////////////////
+// Semester:         CS367 Spring 2016 
+// PROJECT:          p2
+// FILE:             GameApp.java
+//
+// TEAM:    #46 Paras
+// Authors: 
+// Author1: Udhbhav Gupta, ugupta23@wisc.edu, ugupta23, Lec 002
+// Author2: Collin Lacy, clacy@wisc.edu, clacy; Lec 003
+// Author3: Matthew Perry, mperry3@wisc.edu, mperry3, Lec 002
+//
+//////////////////////////// 80 columns wide //////////////////////////////////
+
 import java.util.Scanner;
 
+/**
+ * This class runs the game. The game takes the command line arguments as random
+ * seed and game duration. the game ends when time runs out. Follows the flow of
+ * the Game and generates jobs to be complete
+ * 
+ * <p>
+ * Bugs; None known
+ *
+ * @author Matthew, Udhbhav, Collin
+ */
 public class GameApp {
 
 	private static Game game;
