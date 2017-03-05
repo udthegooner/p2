@@ -44,6 +44,7 @@ public class Game{
         jobSimulator = new JobSimulator(seed);
         this.timeToPlay = timeToPlay;
         scoreBoard = new Scoreboard();
+        list = new JobList();
     }
 
     /**
@@ -102,7 +103,17 @@ public class Game{
      *      The job to be inserted in the list.
      */
     public void addJob(int pos, Job item){
-        list.add(pos, item);
+    	int penalty; //time penalty
+    	if (pos < 0 || pos > list.size()){
+    		penalty = list.size();
+    		list.add(item);
+    	}
+    	else{
+    		penalty = pos;
+    		list.add(pos, item);
+    	}
+    	timeToPlay -= penalty;
+        
     }
 
     /**
@@ -135,6 +146,8 @@ public class Game{
      *      The amount of time the given job is to be worked on for.
      */
     public Job updateJob(int index, int duration){
+    	
+        timeToPlay -= index; //handling time penalty
         Job currJob = list.remove(index); //job to be updated
         
         //checking that duration isn't greater than total timeunits for the job

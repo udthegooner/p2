@@ -15,7 +15,7 @@
  * @author Daniel Jones
  */
 public class Scoreboard implements ScoreboardADT{
-	ListADT<Job> list = new JobList(); //TODO Parameters for the JobList
+	ListADT<Job> list = new JobList(); 
 	int total = 0;
 	
 	/**
@@ -57,7 +57,7 @@ public class Scoreboard implements ScoreboardADT{
 	 * @return void
 	 */
 	public void displayScoreBoard(){
-		System.out.println("Total Score: " + getTotalScore() + "\nThe jobs completed:");
+		System.out.println("Total Score: " + total + "\nThe jobs completed:");
 		for(int i = 0; i < list.size(); ++i){
 			System.out.println("Job Name: " + list.get(i).getJobName());
 			System.out.println("Points earned for this job: " + list.get(i).getPoints());
