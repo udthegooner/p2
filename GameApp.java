@@ -99,6 +99,7 @@ public class GameApp {
 				System.out.println("Job completed! Current Score: " 
 						+ game.getTotalScore());
 				game.createJobs();
+				game.displayCompletedJobs();
 			}
 			//incomplete job	
 			else {
@@ -108,9 +109,6 @@ public class GameApp {
 				game.addJob(insertPos, chosenJob);
 				game.createJobs();
 			}
-			//display scoreboard if game is not complete
-			if (!game.isOver())
-				game.displayCompletedJobs();
 				
 		}
 			
